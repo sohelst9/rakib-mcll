@@ -1,0 +1,25 @@
+Options +FollowSymLinks
+RewriteEngine on
+
+# Ensure the host is dashboard.playmcll.com
+RewriteCond %{HTTP_HOST} ^dashboard\.playmcll\.com$ [NC]
+
+# Redirect all requests to the public directory, except requests to the public directory itself
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]
+
+# Route all requests through Laravel's public/index.php (except for actual files or directories)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ public/index.php [L]
+
+# PHP version handler (adjusted to your PHP version if needed)
+AddHandler application/x-httpd-php81 .php .php5 .php4 .php3
+
+# CORS Headers
+<ifModule mod_headers.c>
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header set Access-Control-Allow-Headers "Content-Type, X-Auth-Token, Authorization, Origin"
+Header set Access-Control-Allow-Credentials "true"
+</ifModule>

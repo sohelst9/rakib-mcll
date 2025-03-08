@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "414502995364",
+    "project_id": "ludo99-1f43c",
+    "storage_bucket": "ludo99-1f43c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:414502995364:android:1b9416304ef8cc4bb52d31",
+        "android_client_info": {
+          "package_name": "com.ludo99.ludo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "414502995364-s5fc1japfi8ec37qigpoi3luv9mcmsbh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ludo99.ludo",
+            "certificate_hash": "b52105ee6befd1fe6b7d027158fcd7099ef6b243"
+          }
+        },
+        {
+          "client_id": "414502995364-t3d1jegfil1uvund2nnekcu6l3j3ug0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfJnOlZ4UHiEVg39nZ2vYnKRowtqQisNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "414502995364-t3d1jegfil1uvund2nnekcu6l3j3ug0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
