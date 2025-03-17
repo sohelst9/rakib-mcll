@@ -46,8 +46,8 @@ class AuthenticationController extends Controller
                 ['otp' => $otp, 'expires_at' => $expiresAt]
             );
 
-            $message = 'Your OTP is ' . $otp;
-            $url = "http://bulksmsbd.net/api/smsapi?api_key=XBb5aTHdQrAquQ7Q4OSd&type=text&number={$phone}&senderid=8809617624524&message={$message}";
+            $message = "Dear Customer, {$otp} is your one time password (OTP). Please enter the OTP to proceed.\n\nThank you.";
+            $url = "http://sms.joypurhost.com/api/smsapi?api_key=lEHIet1hTPvMf94Bpwl2&type=text&number={$phone}&senderid=8809617624788&message={$message}";
             $response = Http::get($url);
 
             return response()->json(
@@ -70,8 +70,8 @@ class AuthenticationController extends Controller
                 // Delete old personal access tokens
                 $user->tokens()->delete();
 
-                $message = 'Your OTP is ' . $otp;
-                $url = "http://bulksmsbd.net/api/smsapi?api_key=XBb5aTHdQrAquQ7Q4OSd&type=text&number={$phone}&senderid=8809617624524&message={$message}";
+                $message = "Dear Customer, {$otp} is your one time password (OTP). Please enter the OTP to proceed.\n\nThank you.";
+                $url = "http://sms.joypurhost.com/api/smsapi?api_key=lEHIet1hTPvMf94Bpwl2&type=text&number={$phone}&senderid=8809617624788&message={$message}";
                 $response = Http::get($url);
                 return response()->json(
                     [

@@ -14,6 +14,7 @@ class UserListController extends Controller
         $users = User::latest()
             ->with('totalbalance')
             ->where('name', 'LIKE', '%' . $request->search . '%')
+            ->orWhere('phone', 'LIKE', '%' . $request->search . '%')
             ->paginate(50);
         return view('Admin.user.index', compact('users'));
     }

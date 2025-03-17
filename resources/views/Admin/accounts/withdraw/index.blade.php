@@ -43,6 +43,7 @@
                                     </td>
                                     <td class="fw-bold">{{ $withdraw->user ? $withdraw->user->name : 'N/A' }}</td>
                                     <td>{{ $withdraw->withdraw_number ? $withdraw->withdraw_number->number : 'N/A' }}</td>
+
                                     <td class="fw-bold">{{ $withdraw->trnx_type }}</td>
                                     <td class="fw-bold">{{ $withdraw->amount }} TK</td>
                                     <td class="fw-bold">{{ $withdraw->trnx_id }}</td>
@@ -86,7 +87,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3" class="text-end fw-bold">Total Amount:</td>
+                                <td colspan="4" class="text-end fw-bold">Total Amount:</td>
                                 <td class="text-start fw-bold text-primary">
                                     {{ number_format(
                                         $withdraws->sum(function ($withdraw) {

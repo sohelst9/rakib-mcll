@@ -15,6 +15,6 @@ class Withdraw extends Model
 
     public function withdraw_number()
     {
-        return $this->belongsTo(WithdrawNumber::class);
+        return $this->hasOne(WithdrawNumber::class, 'number', 'withdraw_number_id');
     }
 }

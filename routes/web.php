@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\UserListController;
 use App\Http\Controllers\Admin\WithdrawController;
 use App\Http\Controllers\payment\UniquepayController;
 use App\Http\Controllers\TournamentGameScoreController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -27,14 +28,67 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/sms-send', function() {
-//     $phone = '01775484658';
-//     $message = 'Hello, This is a test message';
-//     $url = "http://bulksmsbd.net/api/smsapi?api_key=XBb5aTHdQrAquQ7Q4OSd&type=text&number={$phone}&senderid=8809617624524&message={$message}";
-//     $response = Http::get($url);
-//     return $response->body();
+Route::get('/sms-send', function() {
+    $phone = '01305191222';
+    $message = 'Hello, This is a test message';
+    $url = "http://sms.joypurhost.com/api/smsapi?api_key=lEHIet1hTPvMf94Bpwl2&type=text&number={$phone}&senderid=8809617624788&message={$message}";
 
-// });
+    $response = Http::get($url);
+    return $response->body();
+
+});
+
+
+
+Route::get('/bulk-sms', function () {
+    
+
+    $phone = "01775484658"; // Replace with recipient phone number
+    $message = "Hello, this is a test SMS!"; // Replace with your message
+
+    $api_key = "lEHIet1hTPvMf94Bpwl2"; // Replace with your actual API key
+    $sender_id = "8809617624788"; // Your sender ID
+
+    // Encode message to prevent URL issues
+    $encoded_message = urlencode($message);
+
+    // Construct API URL dynamically
+    $url = "http://sms.joypurhost.com/api/smsapi?api_key=$api_key&type=text&number=$phone&senderid=$sender_id&message=$encoded_message";
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 10,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+    ));
+
+    $response = curl_exec($curl);
+    $http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+    curl_close($curl);
+
+    // Handle API response
+    if ($http_code == 200) {
+        echo "✅ SMS sent successfully: " . $response;
+    } else {
+        echo "❌ Failed to send SMS. HTTP Code: " . $http_code . " Response: " . $response;
+    }
+
+});
+
+
+
+Route::get('/clear-all-cache', function() {
+    Artisan::call('optimize:clear'); 
+    return response()->json([
+        'status' => 'success',
+        'message' => 'All cache cleared successfully!'
+    ]);
+});
 
 //--payment success and failed route---
 Route::get('payment/success', function () {

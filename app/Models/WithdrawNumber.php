@@ -12,10 +12,4 @@ class WithdrawNumber extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    //-- relation withdraw model
-    public function withdraws()
-    {
-        return $this->hasMany(Withdraw::class);
-    }
 }

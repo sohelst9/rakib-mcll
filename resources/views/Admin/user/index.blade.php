@@ -10,7 +10,7 @@
         <!-- Search Bar -->
         <div class="mb-3">
             <form action="{{ route('admin.userlists') }}" method="GET" class="d-flex">
-                <input type="text" name="search" class="form-control me-2" placeholder="Search by User Name"
+                <input type="text" name="search" class="form-control me-2" placeholder="Search by Name or Phone"
                     value="{{ request('search') }}">
                 <button type="submit" class="btn btn-primary">
                     <iconify-icon icon="mdi:magnify"></iconify-icon> Search
